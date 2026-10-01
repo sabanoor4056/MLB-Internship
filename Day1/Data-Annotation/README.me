@@ -1,0 +1,39 @@
+# Bike Detection - Data Annotation
+
+## Overview
+This is a basic image annotation task completed using Roboflow.
+
+## Dataset
+- Total Images: 5
+- Training Images: 4
+- Validation Images: 1
+- Test Images: 0
+- Object/Class: Bike
+
+## Annotation
+- Tool: Roboflow
+- Annotation Type: Bounding Box
+- Format: YOLOv8
+
+## Annotation Process
+1. Selected 5 bike images.
+2. Identified bikes as the object/class.
+3. Created the `bike` class.
+4. Annotated each bike using bounding boxes.
+5. Exported the dataset in YOLOv8 format.
+6. Manually checked the annotations for accuracy.
+
+## YOLO Annotation Format
+Each `.txt` annotation file contains:
+
+class_id x_center y_center width height
+
+The coordinates are normalized between 0 and 1.
+
+## Dataset Structure
+
+- `train/images` - Training images
+- `train/labels` - Training annotations
+- `valid/images` - Validation images
+- `valid/labels` - Validation annotations
+- `data.yaml` - Dataset configuration
