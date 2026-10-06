@@ -16,6 +16,7 @@ Today I learned:
 ## Student Record Management System
 
 I upgraded my previous Student Record Management System by adding JSON file storage.
+
 The system can:
 
 * Add student records
@@ -30,6 +31,7 @@ The system can:
 ## How File Handling and JSON Work Together
 
 Python file handling is used to open and save the `students.json` file.
+
 JSON stores student information in a structured format. When the program starts, it loads the existing data from the JSON file. Whenever a student is added, updated, or deleted, the changes are saved back to the file.
 
 ## Challenges Faced
