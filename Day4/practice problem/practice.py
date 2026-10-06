@@ -1,15 +1,15 @@
+import json
+
 # =========================
 # FILE HANDLING PRACTICE
 # =========================
-
-import json
 
 # Create and write to a file
 with open("practice.txt", "w") as file:
     file.write("Python File Handling\n")
     file.write("I am learning JSON\n")
-    file.write("my name is saba noor\n")
-    file.write('i am a final year student\n')
+    file.write("my name is saba\n")
+    file.write("i am in final year\n")
 print("File created successfully.")
 
 # Read the file
@@ -37,8 +37,7 @@ student = {
     "name": "Saba",
     "age": 22,
     "course": "Python",
-    "uni" : "superior university",
-    "degree" : "BS IET"
+    "uni": "superior university" 
 }
 
 # Save dictionary to JSON

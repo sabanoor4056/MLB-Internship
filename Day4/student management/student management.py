@@ -1,4 +1,5 @@
 import json
+
 FILE_NAME = "students.json"
 
 # Load students from JSON file
@@ -12,16 +13,19 @@ def load_students():
         print("JSON file is empty or incorrect.")
         return []
 
+
 # Save students to JSON file
 def save_students(students):
     with open(FILE_NAME, "w") as file:
         json.dump(students, file, indent=4)
+
 
 # Add student
 def add_student(students):
     print("\n--- Add Student ---")
     try:
         roll_number = int(input("Enter Roll Number: "))
+
         # Check duplicate roll number
         for student in students:
             if student["roll_number"] == roll_number:
@@ -36,6 +40,7 @@ def add_student(students):
             "age": age,
             "course": course
         }
+
         students.append(student)
         save_students(students)
         print("Student added successfully.")
@@ -73,6 +78,7 @@ def search_student(students):
         print("Student not found.")
     except ValueError:
         print("Invalid input! Roll number must be a number.")
+
 
 # Update student
 def update_student(students):
@@ -115,6 +121,7 @@ def delete_student(students):
 students = load_students()
 print("Student Record Management System")
 print("Records loaded successfully.")
+
 while True:
 
     print("\n===== MENU =====")
