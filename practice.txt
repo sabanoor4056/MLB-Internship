@@ -1,5 +1,0 @@
-Python File Handling
-I am learning JSON
-my name is saba noor
-i am a final year student
-Day 4 Practice
