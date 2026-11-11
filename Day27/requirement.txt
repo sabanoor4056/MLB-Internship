@@ -1,4 +1,3 @@
-examples/
-    original_video.png
-    grayscale.png
-    edge_detection.png
+streamlit
+opencv-python-headless
+numpy
