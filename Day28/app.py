@@ -7,23 +7,6 @@ import subprocess
 import sys
 from PIL import Image
 
-
-# Automatically start Streamlit when running with Python
-if __name__ == "__main__" and not os.environ.get("STREAMLIT_RUN"):
-    env = os.environ.copy()
-    env["STREAMLIT_RUN"] = "1"
-
-    subprocess.run([
-        sys.executable,
-        "-m",
-        "streamlit",
-        "run",
-        os.path.abspath(__file__)
-    ], env=env)
-
-    sys.exit()
-
-
 # Page Settings
 st.set_page_config(
     page_title="Computer Vision Studio",
@@ -121,7 +104,6 @@ def process_image(image, operation, brightness):
             (0, 255, 0),
             2
         )
-
     # 7. Shape Detection
     elif operation == "Shape Detection":
 
