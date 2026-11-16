@@ -2,4 +2,4 @@ streamlit
 easyocr
 pillow
 numpy
-opencv-python-headlessG
+opencv-python-headless
