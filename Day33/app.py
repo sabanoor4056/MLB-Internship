@@ -234,25 +234,21 @@ if page == "Dashboard":
 
     # HERO SECTION
 
-    st.markdown("""
-    <div class="hero">
-        <div class="hero-title">
-            👥 PeopleVision AI
-        </div>
+       # HERO SECTION
 
-        <div class="hero-description">
-            Smart People Detection, Tracking
-            and Crowd Analytics Dashboard
-        </div>
+    st.title("👥 PeopleVision AI")
 
-        <br>
+    st.write(
+        "Smart People Detection, Tracking "
+        "and Crowd Analytics Dashboard"
+    )
 
-        <span class="tag">YOLO Detection</span>
-        <span class="tag">ByteTrack Tracking</span>
-        <span class="tag">Real-Time Frame Analysis</span>
-        <span class="tag">Crowd Analytics</span>
-    </div>
-    """, unsafe_allow_html=True)
+    st.caption(
+        "YOLO Detection  |  ByteTrack Tracking  |  "
+        "Real-Time Frame Analysis  |  Crowd Analytics"
+    )
+
+    st.divider()
 
 
     # UPLOAD SECTION
@@ -533,20 +529,16 @@ if page == "Dashboard":
 
 # ABOUT PROJECT PAGE
 
+# ABOUT PROJECT PAGE
+
 elif page == "About Project":
 
-    st.markdown("""
-    <div class="hero">
-        <div class="hero-title">
-            About PeopleVision AI
-        </div>
+    st.title("👥 About PeopleVision AI")
 
-        <div class="hero-description">
-            An AI-powered system for detecting,
-            tracking and analyzing people in images and videos.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.write(
+        "An AI-powered system for detecting, tracking and "
+        "analyzing people in images and videos."
+    )
 
     st.divider()
 
@@ -567,25 +559,23 @@ elif page == "About Project":
 
     # TECHNOLOGIES USED
 
+        # TECHNOLOGIES USED
+
     st.markdown("### 🛠️ Technologies Used")
 
-    st.markdown("""
-    <div class="info-box">
+    with st.container(border=True):
 
-        <h4>🤖 YOLO</h4>
-        <p>Detects people in images and video frames.</p>
+        st.markdown("#### 🤖 YOLO")
+        st.write("Detects people in images and video frames.")
 
-        <h4>📷 OpenCV</h4>
-        <p>Processes images and videos and draws bounding boxes.</p>
+        st.markdown("#### 📷 OpenCV")
+        st.write("Processes images and videos and draws bounding boxes.")
 
-        <h4>🔄 ByteTrack</h4>
-        <p>Tracks detected people using unique IDs.</p>
+        st.markdown("#### 🔄 ByteTrack")
+        st.write("Tracks detected people using unique IDs.")
 
-        <h4>🌐 Streamlit</h4>
-        <p>Provides the interactive web application.</p>
-
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("#### 🌐 Streamlit")
+        st.write("Provides the interactive web application.")
 
 
     # MAIN FEATURES
