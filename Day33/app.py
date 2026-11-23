@@ -26,6 +26,9 @@ if "analysis_result" not in st.session_state:
 if "upload_hash" not in st.session_state:
     st.session_state["upload_hash"] = None
 
+if "last_input_type" not in st.session_state:
+    st.session_state["last_input_type"] = "Image"
+
 
 # CUSTOM CSS
 
@@ -132,8 +135,9 @@ hr {
 }
 
 .hero-description {
-    font-size: 15px;
-    color: #C7D2FE;
+    font-size: 16px;
+    color: #CBD5E1;
+    line-height: 1.6;
 }
 
 .tag {
@@ -142,8 +146,9 @@ hr {
     color: #DDD6FE;
     padding: 6px 12px;
     border-radius: 20px;
+    margin: 5px 5px 5px 0;
     font-size: 12px;
-    margin: 4px 4px 4px 0;
+    border: 1px solid #6366F1;
 }
 
 .section-heading {
@@ -215,7 +220,19 @@ with st.sidebar:
 
 if page == "Dashboard":
 
-    # Hero section
+    # Reset old result if media type changes
+
+    input_type = st.selectbox(
+        "Select Media Type",
+        ["Image", "Video"]
+    )
+
+    if input_type != st.session_state["last_input_type"]:
+        st.session_state["analysis_result"] = None
+        st.session_state["upload_hash"] = None
+        st.session_state["last_input_type"] = input_type
+
+    # HERO SECTION
 
     st.markdown("""
     <div class="hero">
@@ -237,32 +254,17 @@ if page == "Dashboard":
     </div>
     """, unsafe_allow_html=True)
 
-    # Upload section
+
+    # UPLOAD SECTION
 
     st.markdown(
         '<div class="section-heading">📁 Upload Your Media</div>',
         unsafe_allow_html=True
     )
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        input_type = st.selectbox(
-            "Select Media Type",
-            ["Image", "Video"]
-        )
-
-    with col2:
-
-        if input_type == "Image":
-            st.info("Supported formats: JPG, JPEG, PNG")
-        else:
-            st.info("Supported formats: MP4, AVI, MOV")
-
-    # File uploader
-
     if input_type == "Image":
+
+        st.info("Supported formats: JPG, JPEG, PNG")
 
         uploaded_file = st.file_uploader(
             "Choose an image",
@@ -272,21 +274,26 @@ if page == "Dashboard":
 
     else:
 
+        st.info("Supported formats: MP4, AVI, MOV")
+
         uploaded_file = st.file_uploader(
             "Choose a video",
             type=["mp4", "avi", "mov"],
             key="video_upload"
         )
 
-    # File processing
+
+    # FILE PROCESSING
 
     if uploaded_file is not None:
 
         uploaded_bytes = uploaded_file.getvalue()
 
-        current_hash = hashlib.sha256(
+        file_hash = hashlib.sha256(
             uploaded_bytes
         ).hexdigest()
+
+        current_hash = f"{input_type}_{file_hash}"
 
         if current_hash != st.session_state["upload_hash"]:
 
@@ -335,7 +342,8 @@ if page == "Dashboard":
 
         st.divider()
 
-        # Processing button
+
+        # PROCESSING BUTTON
 
         if st.button(
             "🚀 Start AI Detection",
@@ -379,7 +387,8 @@ if page == "Dashboard":
                         f"processed_video_{unique_id}.mp4"
                     )
 
-                # Run AI processing
+
+                # RUN AI PROCESSING
 
                 with st.spinner(
                     "AI is detecting and analyzing people... Please wait."
@@ -432,7 +441,8 @@ if page == "Dashboard":
                     except OSError:
                         pass
 
-    # Results section
+
+    # RESULTS SECTION
 
     result_data = st.session_state.get("analysis_result")
 
@@ -445,16 +455,12 @@ if page == "Dashboard":
             unsafe_allow_html=True
         )
 
-        # Image results
-
         if result_data["type"] == "Image":
 
             st.metric(
                 "Total People Detected",
                 result_data["count"]
             )
-
-        # Video results
 
         else:
 
@@ -469,8 +475,6 @@ if page == "Dashboard":
                 "Peak Occupancy",
                 result_data["peak"]
             )
-
-        # Processed output
 
         st.divider()
 
@@ -546,7 +550,8 @@ elif page == "About Project":
 
     st.divider()
 
-    # Project objective
+
+    # PROJECT OBJECTIVE
 
     st.markdown("### 🎯 Project Objective")
 
@@ -559,7 +564,8 @@ elif page == "About Project":
     for tracking and OpenCV for image and video processing.
     """)
 
-    # Technologies used
+
+    # TECHNOLOGIES USED
 
     st.markdown("### 🛠️ Technologies Used")
 
@@ -581,7 +587,8 @@ elif page == "About Project":
     </div>
     """, unsafe_allow_html=True)
 
-    # Main features
+
+    # MAIN FEATURES
 
     st.markdown("### ✨ Main Features")
 
@@ -593,7 +600,8 @@ elif page == "About Project":
     - Processed image and video downloads
     """)
 
-    # Real-world applications
+
+    # REAL-WORLD APPLICATIONS
 
     st.markdown("### 🌍 Real-World Applications")
 
@@ -605,7 +613,8 @@ elif page == "About Project":
     - Building entrance monitoring
     """)
 
-    # Future improvements
+
+    # FUTURE IMPROVEMENTS
 
     st.markdown("### 🚀 Future Improvements")
 
