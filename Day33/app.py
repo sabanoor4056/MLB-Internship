@@ -172,7 +172,37 @@ hr {
     font-size: 12px;
     padding: 25px 0 10px 0;
 }
+.hero-box {
+    background: linear-gradient(120deg, #1E1B4B, #172554, #17243A);
+    padding: 32px;
+    border-radius: 18px;
+    border: 1px solid #39466B;
+    margin-bottom: 25px;
+}
 
+.hero-heading {
+    font-size: 34px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+}
+
+.hero-text {
+    font-size: 16px;
+    color: #CBD5E1;
+    line-height: 1.7;
+}
+
+.tag {
+    display: inline-block;
+    background: #312E81;
+    color: #DDD6FE;
+    padding: 7px 13px;
+    border-radius: 20px;
+    margin: 5px 5px 5px 0;
+    font-size: 12px;
+    border: 1px solid #6366F1;
+}
 </style>
 """, unsafe_allow_html=True)
 
