@@ -679,16 +679,18 @@ st.markdown("""
 
     # Main features
 
+    
+elif page == "About Project":
+
     st.markdown("### ✨ Main Features")
 
-    st.write("""
-    - People detection in images and videos
-    - Unique person tracking IDs
-    - Bounding boxes and confidence scores
-    - Visible people counting
-    - Peak occupancy calculation
-    - Processed output download
+    st.markdown("""
+    - YOLO-based people detection
+    - ByteTrack tracking with unique IDs
+    - People counting and crowd analytics
+    - Processed image and video downloads
     """)
+
 
 
     # Real-world applications
