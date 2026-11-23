@@ -668,7 +668,13 @@ elif page == "About Project":
     <p>Tracks detected people using unique IDs.</p>
 
     <h4>🌐 Streamlit</h4>
-    <p>Provides the interactive web application.</p>
+    
+<h4>🔄 ByteTrack</h4>
+<p>Tracks detected people using unique IDs.</p>
+
+<h4>🌐 Streamlit</h4>
+<p>Provides the interactive web application.</p>
+
     """, unsafe_allow_html=True)
 
 
@@ -696,6 +702,14 @@ elif page == "About Project":
 
         <h4>🌐 Streamlit</h4>
         <p>Provides the interactive web application.</p>
+
+        
+<h4>🔄 ByteTrack</h4>
+<p>Tracks detected people using unique IDs.</p>
+
+<h4>🌐 Streamlit</h4>
+<p>Provides the interactive web application.</p>
+
     </div>
     """, unsafe_allow_html=True)
 
