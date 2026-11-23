@@ -246,51 +246,31 @@ with st.sidebar:
     st.caption("Machine Learning & Computer Vision Internship")
 
 
+
 # DASHBOARD PAGE
 
 if page == "Dashboard":
 
-    # Reset old result if media type changes
-
-    input_type = st.selectbox(
-        "Select Media Type",
-        ["Image", "Video"]
-    )
-
-    if input_type != st.session_state["last_input_type"]:
-        st.session_state["analysis_result"] = None
-        st.session_state["upload_hash"] = None
-        st.session_state["last_input_type"] = input_type
-
-    
     # HERO SECTION
 
     with st.container(border=True):
 
-        st.markdown(
-            '<div class="hero-heading">👥 PeopleVision AI</div>',
-            unsafe_allow_html=True
+        st.markdown("## 👥 PeopleVision AI")
+
+        st.write(
+            "Smart People Detection, Tracking "
+            "and Crowd Analytics Dashboard"
         )
 
-        st.markdown(
-            '<div class="hero-text">'
-            'Smart People Detection, Tracking '
-            'and Crowd Analytics Dashboard'
-            '</div>',
-            unsafe_allow_html=True
+        st.caption(
+            "🟣 YOLO Detection  |  "
+            "🟣 ByteTrack Tracking"
         )
 
-        st.write("")
-
-        tag_col1, tag_col2 = st.columns(2)
-
-        with tag_col1:
-            st.caption("🟣 YOLO Detection")
-            st.caption("🟣 ByteTrack Tracking")
-
-        with tag_col2:
-            st.caption("🟣 Real-Time Frame Analysis")
-            st.caption("🟣 Crowd Analytics")
+        st.caption(
+            "🟣 Real-Time Frame Analysis  |  "
+            "🟣 Crowd Analytics"
+        )
 
     st.divider()
 
@@ -301,29 +281,31 @@ if page == "Dashboard":
     col1, col2 = st.columns(2)
 
     with col1:
+
         input_type = st.selectbox(
             "Select Media Type",
-            ["Image", "Video"]
+            ["Image", "Video"],
+            key="media_type"
         )
 
     with col2:
+
         if input_type == "Image":
             st.info("Supported formats: JPG, JPEG, PNG")
         else:
             st.info("Supported formats: MP4, AVI, MOV")
 
+    # RESET OLD RESULT WHEN MEDIA TYPE CHANGES
 
+    if input_type != st.session_state["last_input_type"]:
 
-    # UPLOAD SECTION
+        st.session_state["analysis_result"] = None
+        st.session_state["upload_hash"] = None
+        st.session_state["last_input_type"] = input_type
 
-    st.markdown(
-        '<div class="section-heading">📁 Upload Your Media</div>',
-        unsafe_allow_html=True
-    )
+    # FILE UPLOADER
 
     if input_type == "Image":
-
-        st.info("Supported formats: JPG, JPEG, PNG")
 
         uploaded_file = st.file_uploader(
             "Choose an image",
@@ -333,13 +315,12 @@ if page == "Dashboard":
 
     else:
 
-        st.info("Supported formats: MP4, AVI, MOV")
-
         uploaded_file = st.file_uploader(
             "Choose a video",
             type=["mp4", "avi", "mov"],
             key="video_upload"
         )
+
 
 
     # FILE PROCESSING
