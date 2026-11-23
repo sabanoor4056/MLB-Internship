@@ -32,22 +32,16 @@ if "upload_hash" not in st.session_state:
 st.markdown("""
 <style>
 
-/* Main application */
-
 .stApp {
     background: #0B1020;
     color: #F1F5F9;
 }
-
-/* Main content */
 
 .block-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
     max-width: 1250px;
 }
-
-/* Sidebar */
 
 section[data-testid="stSidebar"] {
     background: #11182B;
@@ -58,27 +52,19 @@ section[data-testid="stSidebar"] * {
     color: #E2E8F0;
 }
 
-/* Main headings */
-
 h1, h2, h3, h4 {
     color: #F8FAFC !important;
 }
 
-/* Paragraphs */
-
 p {
     color: #B8C4D8;
 }
-
-/* Cards */
 
 div[data-testid="stVerticalBlockBorderWrapper"] {
     background: #131D32;
     border: 1px solid #283651;
     border-radius: 14px;
 }
-
-/* Metric cards */
 
 div[data-testid="stMetric"] {
     background: #17243A;
@@ -87,13 +73,9 @@ div[data-testid="stMetric"] {
     border: 1px solid #30405D;
 }
 
-/* Metric values */
-
 div[data-testid="stMetricValue"] {
     color: #A78BFA;
 }
-
-/* Buttons */
 
 .stButton > button {
     background: linear-gradient(90deg, #7C3AED, #6366F1);
@@ -103,16 +85,12 @@ div[data-testid="stMetricValue"] {
     padding: 0.65rem 1.2rem;
     font-weight: 600;
     width: 100%;
-    transition: 0.2s;
 }
 
 .stButton > button:hover {
     background: linear-gradient(90deg, #6D28D9, #4F46E5);
     color: white;
-    border: none;
 }
-
-/* Download buttons */
 
 .stDownloadButton > button {
     background: #17243A;
@@ -122,8 +100,6 @@ div[data-testid="stMetricValue"] {
     width: 100%;
 }
 
-/* Upload area */
-
 div[data-testid="stFileUploader"] {
     background: #131D32;
     border: 1px dashed #64748B;
@@ -131,13 +107,9 @@ div[data-testid="stFileUploader"] {
     padding: 15px;
 }
 
-/* Divider */
-
 hr {
     border-color: #283651;
 }
-
-/* Project header */
 
 .hero {
     background: linear-gradient(
@@ -212,10 +184,7 @@ with st.sidebar:
 
     page = st.radio(
         "NAVIGATION",
-        [
-            "Dashboard",
-            "About Project"
-        ],
+        ["Dashboard", "About Project"],
         label_visibility="visible"
     )
 
@@ -239,7 +208,7 @@ with st.sidebar:
 
     st.success("Application Ready")
 
-    st.caption("Day 33 | MLB Internship")
+    st.caption("Machine Learning & Computer Vision Internship")
 
 
 # DASHBOARD PAGE
@@ -248,26 +217,25 @@ if page == "Dashboard":
 
     # Hero section
 
-    
     st.markdown("""
-<div class="hero-title">
-    👥 PeopleVision AI
-</div>
+    <div class="hero">
+        <div class="hero-title">
+            👥 PeopleVision AI
+        </div>
 
-<div class="hero-description">
-    Smart People Detection, Tracking
-    and Crowd Analytics Dashboard
-</div>
+        <div class="hero-description">
+            Smart People Detection, Tracking
+            and Crowd Analytics Dashboard
+        </div>
 
-<br>
+        <br>
 
-<span class="tag">YOLO Detection</span>
-<span class="tag">ByteTrack Tracking</span>
-<span class="tag">Real-Time Frame Analysis</span>
-<span class="tag">Crowd Analytics</span>
-""", unsafe_allow_html=True)
-
-
+        <span class="tag">YOLO Detection</span>
+        <span class="tag">ByteTrack Tracking</span>
+        <span class="tag">Real-Time Frame Analysis</span>
+        <span class="tag">Crowd Analytics</span>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Upload section
 
@@ -288,13 +256,9 @@ if page == "Dashboard":
     with col2:
 
         if input_type == "Image":
-
             st.info("Supported formats: JPG, JPEG, PNG")
-
         else:
-
             st.info("Supported formats: MP4, AVI, MOV")
-
 
     # File uploader
 
@@ -314,14 +278,11 @@ if page == "Dashboard":
             key="video_upload"
         )
 
-
     # File processing
 
     if uploaded_file is not None:
 
         uploaded_bytes = uploaded_file.getvalue()
-
-        # Check uploaded file
 
         current_hash = hashlib.sha256(
             uploaded_bytes
@@ -330,9 +291,7 @@ if page == "Dashboard":
         if current_hash != st.session_state["upload_hash"]:
 
             st.session_state["analysis_result"] = None
-
             st.session_state["upload_hash"] = current_hash
-
 
         st.divider()
 
@@ -357,7 +316,6 @@ if page == "Dashboard":
 
                 st.video(uploaded_bytes)
 
-
         with details_col:
 
             st.markdown("### File Information")
@@ -375,9 +333,7 @@ if page == "Dashboard":
 
             st.success("Ready for AI Analysis")
 
-
         st.divider()
-
 
         # Processing button
 
@@ -392,8 +348,6 @@ if page == "Dashboard":
 
             try:
 
-                # Create temporary input file
-
                 suffix = os.path.splitext(
                     uploaded_file.name
                 )[1]
@@ -404,29 +358,12 @@ if page == "Dashboard":
                 ) as temp:
 
                     temp.write(uploaded_bytes)
-
                     input_path = temp.name
 
-
-                # Create output folders
-
-                os.makedirs(
-                    "output_images",
-                    exist_ok=True
-                )
-
-                os.makedirs(
-                    "output_videos",
-                    exist_ok=True
-                )
-
-
-                # Generate output filename
+                os.makedirs("output_images", exist_ok=True)
+                os.makedirs("output_videos", exist_ok=True)
 
                 unique_id = uuid.uuid4().hex[:8]
-
-
-                # Select output path
 
                 if input_type == "Image":
 
@@ -441,7 +378,6 @@ if page == "Dashboard":
                         "output_videos",
                         f"processed_video_{unique_id}.mp4"
                     )
-
 
                 # Run AI processing
 
@@ -477,39 +413,28 @@ if page == "Dashboard":
                             "output": output_path
                         }
 
-
-                # Save results
-
                 st.session_state["analysis_result"] = result_data
 
-                st.success(
-                    "AI Analysis Completed Successfully!"
-                )
-
+                st.success("AI Analysis Completed Successfully!")
 
             except Exception as e:
 
-                st.error(
-                    f"Processing failed: {e}"
-                )
+                st.error(f"Processing failed: {e}")
 
                 st.session_state["analysis_result"] = None
 
-
             finally:
-
-                # Remove temporary file
 
                 if input_path and os.path.exists(input_path):
 
-                    os.remove(input_path)
-
+                    try:
+                        os.remove(input_path)
+                    except OSError:
+                        pass
 
     # Results section
 
-    result_data = st.session_state.get(
-        "analysis_result"
-    )
+    result_data = st.session_state.get("analysis_result")
 
     if result_data is not None:
 
@@ -520,7 +445,6 @@ if page == "Dashboard":
             unsafe_allow_html=True
         )
 
-
         # Image results
 
         if result_data["type"] == "Image":
@@ -529,7 +453,6 @@ if page == "Dashboard":
                 "Total People Detected",
                 result_data["count"]
             )
-
 
         # Video results
 
@@ -547,7 +470,6 @@ if page == "Dashboard":
                 result_data["peak"]
             )
 
-
         # Processed output
 
         st.divider()
@@ -558,7 +480,6 @@ if page == "Dashboard":
         )
 
         output_path = result_data["output"]
-
 
         if os.path.exists(output_path):
 
@@ -578,7 +499,6 @@ if page == "Dashboard":
                         file_name="processed_image.jpg",
                         mime="image/jpeg"
                     )
-
 
             else:
 
@@ -600,7 +520,6 @@ if page == "Dashboard":
                 "Please run detection again."
             )
 
-
     else:
 
         st.info(
@@ -610,36 +529,22 @@ if page == "Dashboard":
 
 # ABOUT PROJECT PAGE
 
-
 elif page == "About Project":
 
     st.markdown("""
-    <div class="hero-title">
-        About PeopleVision AI
-    </div>
+    <div class="hero">
+        <div class="hero-title">
+            About PeopleVision AI
+        </div>
 
-    <div class="hero-description">
-        An AI-powered system for detecting,
-        tracking and analyzing people in images and videos.
-    </div>
-    """, unsafe_allow_html=True)
-
-    
-    st.markdown("""
-    <div class="info-box">
-        <h4>📷 OpenCV</h4>
-        <p>Processes images and videos and draws bounding boxes.</p>
-
-        <h4>🔄 ByteTrack</h4>
-        <p>Tracks detected people using unique IDs.</p>
-
-        <h4>🌐 Streamlit</h4>
-        <p>Provides the interactive web application.</p>
+        <div class="hero-description">
+            An AI-powered system for detecting,
+            tracking and analyzing people in images and videos.
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-
-
+    st.divider()
 
     # Project objective
 
@@ -654,46 +559,16 @@ elif page == "About Project":
     for tracking and OpenCV for image and video processing.
     """)
 
-
     # Technologies used
 
-    
+    st.markdown("### 🛠️ Technologies Used")
 
-
-    st.markdown("""
-    <h4>📷 OpenCV</h4>
-    <p>Processes images and videos and draws bounding boxes.</p>
-
-    <h4>🔄 ByteTrack</h4>
-    <p>Tracks detected people using unique IDs.</p>
-
-    <h4>🌐 Streamlit</h4>
-    
-<h4>🔄 ByteTrack</h4>
-<p>Tracks detected people using unique IDs.</p>
-
-<h4>🌐 Streamlit</h4>
-<p>Provides the interactive web application.</p>
-
-    """, unsafe_allow_html=True)
-
-
-
-
-    # Main features
-
-
-if page == "Dashboard":
-
-    # Dashboard content
-    st.markdown("## PeopleVision AI")
-
-elif page == "About Project":
-
-    # About Project content
-    
     st.markdown("""
     <div class="info-box">
+
+        <h4>🤖 YOLO</h4>
+        <p>Detects people in images and video frames.</p>
+
         <h4>📷 OpenCV</h4>
         <p>Processes images and videos and draws bounding boxes.</p>
 
@@ -703,22 +578,20 @@ elif page == "About Project":
         <h4>🌐 Streamlit</h4>
         <p>Provides the interactive web application.</p>
 
-        
-<h4>🔄 ByteTrack</h4>
-<p>Tracks detected people using unique IDs.</p>
-
-<h4>🌐 Streamlit</h4>
-<p>Provides the interactive web application.</p>
-
     </div>
     """, unsafe_allow_html=True)
 
-
+    # Main features
 
     st.markdown("### ✨ Main Features")
 
-
-
+    st.write("""
+    - YOLO-based people detection
+    - ByteTrack tracking with unique IDs
+    - People counting and crowd analytics
+    - Bounding boxes and confidence scores
+    - Processed image and video downloads
+    """)
 
     # Real-world applications
 
@@ -731,7 +604,6 @@ elif page == "About Project":
     - Public area crowd management
     - Building entrance monitoring
     """)
-
 
     # Future improvements
 
@@ -749,10 +621,8 @@ elif page == "About Project":
 # FOOTER
 
 st.markdown("""
-<div style="text-align: center;">
+<div class="footer">
     <p>Built with Python, YOLO, OpenCV and Streamlit</p>
     <p>Machine Learning &amp; Computer Vision Internship</p>
 </div>
 """, unsafe_allow_html=True)
-
-
