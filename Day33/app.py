@@ -232,23 +232,56 @@ if page == "Dashboard":
         st.session_state["upload_hash"] = None
         st.session_state["last_input_type"] = input_type
 
+    
     # HERO SECTION
 
-       # HERO SECTION
+    with st.container(border=True):
 
-    st.title("👥 PeopleVision AI")
+        st.markdown(
+            '<div class="hero-heading">👥 PeopleVision AI</div>',
+            unsafe_allow_html=True
+        )
 
-    st.write(
-        "Smart People Detection, Tracking "
-        "and Crowd Analytics Dashboard"
-    )
+        st.markdown(
+            '<div class="hero-text">'
+            'Smart People Detection, Tracking '
+            'and Crowd Analytics Dashboard'
+            '</div>',
+            unsafe_allow_html=True
+        )
 
-    st.caption(
-        "YOLO Detection  |  ByteTrack Tracking  |  "
-        "Real-Time Frame Analysis  |  Crowd Analytics"
-    )
+        st.write("")
+
+        tag_col1, tag_col2 = st.columns(2)
+
+        with tag_col1:
+            st.caption("🟣 YOLO Detection")
+            st.caption("🟣 ByteTrack Tracking")
+
+        with tag_col2:
+            st.caption("🟣 Real-Time Frame Analysis")
+            st.caption("🟣 Crowd Analytics")
 
     st.divider()
+
+    # UPLOAD SECTION
+
+    st.markdown("### 📁 Upload Your Media")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        input_type = st.selectbox(
+            "Select Media Type",
+            ["Image", "Video"]
+        )
+
+    with col2:
+        if input_type == "Image":
+            st.info("Supported formats: JPG, JPEG, PNG")
+        else:
+            st.info("Supported formats: MP4, AVI, MOV")
+
 
 
     # UPLOAD SECTION
