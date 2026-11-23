@@ -614,20 +614,18 @@ elif page == "About Project":
 
     # About section
 
-    st.markdown("""
-    <div class="hero">
+    
+st.markdown("""
+<div class="hero-title">
+    About PeopleVision AI
+</div>
 
-        <div class="hero-title">
-            About PeopleVision AI
-        </div>
+<div class="hero-description">
+    An AI-powered system for detecting,
+    tracking and analyzing people in images and videos.
+</div>
+""", unsafe_allow_html=True)
 
-        <div class="hero-description">
-            An AI-powered system for detecting,
-            tracking and analyzing people in images and videos.
-        </div>
-
-    </div>
-    """, unsafe_allow_html=True)
 
 
     # Project objective
@@ -646,50 +644,23 @@ elif page == "About Project":
 
     # Technologies used
 
-    st.markdown("### 🛠️ Technologies Used")
+    
+st.markdown("""
+<div class="info-box">
+    <h4>🤖 YOLO</h4>
+    <p>Detects people in images and video frames.</p>
 
-    col1, col2 = st.columns(2)
+    <h4>📷 OpenCV</h4>
+    <p>Processes images and videos and draws bounding boxes.</p>
 
-    with col1:
+    <h4>🔄 ByteTrack</h4>
+    <p>Tracks detected people using unique IDs.</p>
 
-        st.markdown("""
-        <div class="info-box">
+    <h4>🌐 Streamlit</h4>
+    <p>Provides the interactive web application.</p>
+</div>
+""", unsafe_allow_html=True)
 
-            <h4>🤖 YOLO</h4>
-
-            Detects people in images and video frames.
-
-        </div>
-
-        <div class="info-box">
-
-            <h4>🔄 ByteTrack</h4>
-
-            Tracks detected people using unique IDs.
-
-        </div>
-        """, unsafe_allow_html=True)
-
-
-    with col2:
-
-        st.markdown("""
-        <div class="info-box">
-
-            <h4>📷 OpenCV</h4>
-
-            Processes images and videos and draws bounding boxes.
-
-        </div>
-
-        <div class="info-box">
-
-            <h4>🌐 Streamlit</h4>
-
-            Provides the interactive web application.
-
-        </div>
-        """, unsafe_allow_html=True)
 
 
     # Main features
