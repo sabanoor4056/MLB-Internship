@@ -685,17 +685,20 @@ if page == "Dashboard":
 elif page == "About Project":
 
     # About Project content
-    st.markdown("### About PeopleVision AI")
-
     
-<h4>📷 OpenCV</h4>
-<p>Processes images and videos and draws bounding boxes.</p>
+    st.markdown("""
+    <div class="info-box">
+        <h4>📷 OpenCV</h4>
+        <p>Processes images and videos and draws bounding boxes.</p>
 
-<h4>🔄 ByteTrack</h4>
-<p>Tracks detected people using unique IDs.</p>
+        <h4>🔄 ByteTrack</h4>
+        <p>Tracks detected people using unique IDs.</p>
 
-<h4>🌐 Streamlit</h4>
-<p>Provides the interactive web application.</p>
+        <h4>🌐 Streamlit</h4>
+        <p>Provides the interactive web application.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 
     st.markdown("### ✨ Main Features")
