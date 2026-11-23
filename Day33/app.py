@@ -679,17 +679,35 @@ st.markdown("""
 
     # Main features
 
-    
+
+if page == "Dashboard":
+
+    # Dashboard content
+    st.markdown("## PeopleVision AI")
+
 elif page == "About Project":
+
+    # About Project content
+    st.markdown("### About PeopleVision AI")
+
+    st.markdown("""
+    <div class="info-box">
+        <h4>🤖 YOLO</h4>
+        <p>Detects people in images and video frames.</p>
+
+        <h4>📷 OpenCV</h4>
+        <p>Processes images and videos and draws bounding boxes.</p>
+
+        <h4>🔄 ByteTrack</h4>
+        <p>Tracks detected people using unique IDs.</p>
+
+        <h4>🌐 Streamlit</h4>
+        <p>Provides the interactive web application.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("### ✨ Main Features")
 
-    st.markdown("""
-    - YOLO-based people detection
-    - ByteTrack tracking with unique IDs
-    - People counting and crowd analytics
-    - Processed image and video downloads
-    """)
 
 
 
